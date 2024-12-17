@@ -27,11 +27,15 @@ def index() -> rx.Component:
         rx.vstack(
             rx.box(
                 header(),
-                padding_bottom=Size.BIGGER.value,
+                rx.desktop_only(
+                    padding_bottom=Size.BIGGER.value,
+                ),
             ),
             body(),
-            align_items="center",
-            padding_bottom=Size.BIGEST.value,
+            rx.desktop_only(
+                padding_bottom=Size.BIGEST.value,
+            ),
+            align_items="center"
         ),
         rx.vstack(
             footer(),

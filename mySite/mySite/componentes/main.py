@@ -47,7 +47,7 @@ def header():
                             radius="full",
                             ),
                         rx.vstack(
-                            rx.heading("Hola! ｼ I'm Viepaix", size="5", weidht="bold"),
+                            rx.heading("Hola! ｼ I'm Viepaix", size="5", align="center"),
                             rx.hstack(
                                 rx.text.kbd(
                                 "Pentester (Junior)",
@@ -55,10 +55,10 @@ def header():
                                 ),
                                 padding_top=Size.SMALL
                             ),
-                            align_items="center",
+                            align="center",
                         ),
-                        align_items="center",
-                    ),
+                        align="center"
+                    )
                     ),
                     align="center",
                 ),

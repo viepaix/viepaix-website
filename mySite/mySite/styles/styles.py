@@ -15,6 +15,11 @@ NAVBAR = {
         "backdrop-filter" : "blur(8px)"
     }
 
+NAVBAR2 = {
+        "bg" : "rgba(230, 23, 157, 0.15)",
+        "backdrop-filter" : "blur(8px)",
+        "border_radius" : "50px"
+    }
 # Fonts
 class Fonts(Enum):
     UBU = "Ubuntu Condensed"

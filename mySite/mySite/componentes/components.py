@@ -28,6 +28,7 @@ def navbar_icons_menu_item(
         rx.hstack(
             rx.icon(icon, size=16),
             rx.text(text, size="2", weight="medium"),
+            margin=Size.SMALL.value
         ),
         href=url,
     )
@@ -89,6 +90,7 @@ def navbar() -> rx.Component:
         ),
         rx.mobile_and_tablet(
             rx.hstack(
+                rx.color_mode.button(color=Colors.ICONS),
                 rx.hstack(
                     rx.heading(
                         "0x560x58", size="4", weight="bold"
@@ -101,13 +103,13 @@ def navbar() -> rx.Component:
                     ),
                     rx.menu.content(
                         navbar_icons_menu_item(
-                            "Home", "home", "/#"
+                            "Home", "home", "/"
                         ),
                         navbar_icons_menu_item(
-                            "Projects", "folder", "/#"
+                            "Projects", "folder", "/projects"
                         ),
                         navbar_icons_menu_item(
-                            "Gallery", "images", "/#"
+                            "Blogs", "newspaper", "/blog"
                         ),
                         navbar_icons_menu_item(
                             "Social media", "info", "/#"

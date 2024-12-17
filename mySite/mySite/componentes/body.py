@@ -41,7 +41,7 @@ def languages():
             rx.hstack(
                 rx.avatar(src=MD, size="1"),
                 rx.blockquote("MarkDown", weight="bold")
-            )
+            ),
         )
 
 def tools():
@@ -84,58 +84,113 @@ def tools():
 
 def frameworks_os():
     return rx.card(
-            rx.hstack(
-                rx.heading("OS and Others", padding_bottom=Size.SMALLER.value),
-                rx.avatar(src="https://img.icons8.com/?size=100&id=55485&format=png&color=000000", size="3")
+            rx.desktop_only(
+                rx.hstack(
+                    rx.heading("OS and Others", padding_bottom=Size.SMALLER.value),
+                    rx.avatar(src="https://img.icons8.com/?size=100&id=55485&format=png&color=000000", size="3")
+                ),
+                rx.hstack(
+                    rx.container(
+                        rx.hstack(
+                            rx.avatar(src=WINDOWS, size="1"),
+                            rx.blockquote("Windows", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),
+                        rx.hstack(
+                            rx.avatar(src=LINUX, size="1"),
+                            rx.blockquote("Linux", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),        
+                        rx.hstack(
+                            rx.avatar(src=UBUNTU, size="1"),
+                            rx.blockquote("Ubuntu", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),        
+                        rx.hstack(
+                            rx.avatar(src=DEBIAN, size="1"),
+                            rx.blockquote("Debian", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),        
+                        rx.hstack(
+                            rx.avatar(src=KALI, size="1"),
+                            rx.blockquote("Kali", weight="bold"),
+                        ),
+                    ),
+                    rx.container(
+                        rx.hstack(
+                            rx.avatar(src=PHOTOSHOP, size="1"),
+                            rx.blockquote("Photoshop", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),
+                        rx.hstack(
+                            rx.avatar(src=REGEX, size="1"),
+                            rx.blockquote("Regex", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),
+                        rx.hstack(
+                            rx.avatar(src=WORDPRESS, size="1"),
+                            rx.blockquote("WordPress", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),
+                        rx.hstack(
+                            rx.avatar(src=AMAZON, size="1"),
+                            rx.blockquote("Amazon Web Services", weight="bold")
+                        ),
+                    ),
+                )
             ),
-            rx.hstack(
-                rx.container(
-                    rx.hstack(
-                        rx.avatar(src=WINDOWS, size="1"),
-                        rx.blockquote("Windows", weight="bold"),
-                        padding_bottom=Size.SMALLER
-                    ),
-                    rx.hstack(
-                        rx.avatar(src=LINUX, size="1"),
-                        rx.blockquote("Linux", weight="bold"),
-                        padding_bottom=Size.SMALLER
-                    ),        
-                    rx.hstack(
-                        rx.avatar(src=UBUNTU, size="1"),
-                        rx.blockquote("Ubuntu", weight="bold"),
-                        padding_bottom=Size.SMALLER
-                    ),        
-                    rx.hstack(
-                        rx.avatar(src=DEBIAN, size="1"),
-                        rx.blockquote("Debian", weight="bold"),
-                        padding_bottom=Size.SMALLER
-                    ),        
-                    rx.hstack(
-                        rx.avatar(src=KALI, size="1"),
-                        rx.blockquote("Kali", weight="bold"),
-                    ),
+            rx.mobile_and_tablet(
+                rx.hstack(
+                    rx.heading("OS and Others", padding_bottom=Size.SMALLER.value),
+                    rx.avatar(src="https://img.icons8.com/?size=100&id=55485&format=png&color=000000", size="3")
                 ),
-                rx.container(
-                    rx.hstack(
-                        rx.avatar(src=PHOTOSHOP, size="1"),
-                        rx.blockquote("Photoshop", weight="bold"),
-                        padding_bottom=Size.SMALLER
-                    ),
-                    rx.hstack(
-                        rx.avatar(src=REGEX, size="1"),
-                        rx.blockquote("Regex", weight="bold"),
-                        padding_bottom=Size.SMALLER
-                    ),
-                    rx.hstack(
-                        rx.avatar(src=WORDPRESS, size="1"),
-                        rx.blockquote("WordPress", weight="bold"),
-                        padding_bottom=Size.SMALLER
-                    ),
-                    rx.hstack(
-                        rx.avatar(src=AMAZON, size="1"),
-                        rx.blockquote("Amazon Web Services", weight="bold")
-                    ),
-                ),
+                rx.hstack(
+                    rx.container(
+                        rx.hstack(
+                            rx.avatar(src=WINDOWS, size="1"),
+                            rx.blockquote("Windows", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),
+                        rx.hstack(
+                            rx.avatar(src=LINUX, size="1"),
+                            rx.blockquote("Linux", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),        
+                        rx.hstack(
+                            rx.avatar(src=UBUNTU, size="1"),
+                            rx.blockquote("Ubuntu", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),        
+                        rx.hstack(
+                            rx.avatar(src=DEBIAN, size="1"),
+                            rx.blockquote("Debian", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),        
+                        rx.hstack(
+                            rx.avatar(src=KALI, size="1"),
+                            rx.blockquote("Kali", weight="bold"),
+                        ),
+                        rx.hstack(
+                            rx.avatar(src=PHOTOSHOP, size="1"),
+                            rx.blockquote("Photoshop", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),
+                        rx.hstack(
+                            rx.avatar(src=REGEX, size="1"),
+                            rx.blockquote("Regex", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),
+                        rx.hstack(
+                            rx.avatar(src=WORDPRESS, size="1"),
+                            rx.blockquote("WordPress", weight="bold"),
+                            padding_bottom=Size.SMALLER
+                        ),
+                        rx.hstack(
+                            rx.avatar(src=AMAZON, size="1"),
+                            rx.blockquote("Amazon Web Services", weight="bold")
+                        ),
+                    )
+                )
             )
     )
 
@@ -192,6 +247,57 @@ def body() -> rx.Component:
             ),
             align_items="center",
             width="1260px"
+        ),
+        rx.mobile_and_tablet(
+            rx.grid(
+                rx.vstack(
+                    rx.box(
+                    rx.card(
+                        rx.hstack(
+                            rx.heading("About me", color=Colors.TEXT, align="center"),
+                            rx.avatar(src=AVATAR, size="1"),
+                            padding_bottom=Size.SMALL,
+                            align="center"
+                        ),
+                        rx.text(text, align="center", high_contrast=True),
+                        margin="30px",
+                        size="1",
+                    ),
+                        padding_bottom=Size.MEDIUM
+                    ),
+                    rx.vstack(
+                        rx.heading("| Video of Youtube |", size="1", padding_bottom=Size.DEFAULT),
+                        rx.video(
+                            url="https://www.youtube.com/embed/f1wHduNsqIQ",
+                            width="385px",
+                            height="auto"
+                        ),
+                        align="center"
+                    ),
+                    padding_bottom=Size.DEFAULT,
+                    align="center"
+                ),
+                rx.card(
+                    rx.vstack(
+                        rx.hstack(
+                            rx.heading("Skills", align="center", align_items="center", size="7"),
+                            rx.avatar(src=COFFEE, size="2"),
+                        ),
+                        rx.vstack(
+                            languages(),
+                            tools(),
+                            frameworks_os(),
+                        ),
+                        align="center",
+                    ),
+                    align="center",
+                    size="1"
+                ),
+                columns="1",
+                align="center",
+                margin="10px"
+            ),
+            align="center",
         )
     )
 
