@@ -37,7 +37,10 @@ class Colors(Enum):
     ORANGE = "rgba(252, 98, 52)"
 
 # IMAGENES
+
 LOGO = "https://avatars.githubusercontent.com/u/125932914?s=96&v=4"
+
+PYTHON_IMAGE = "https://media.istockphoto.com/id/1487445129/vector/python-programming-language.jpg?s=612x612&w=0&k=20&c=M5BVp0Vq0i93-7aORwL7zClm0Bis9yQerEQIZ85GDDM="
 
 COFFEE = "https://imgs.search.brave.com/OVSYJrPMTvlN74s7udBZ8JfiyIrVWky5k0-MT7QCUdk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jbGlw/YXJ0LWxpYnJhcnku/Y29tL2ltZy83NDY3/OTIucG5n"
 
@@ -94,6 +97,7 @@ INSTAGRAM = "https://www.instagram.com/viepaix_/"
 YOUTUBE = "https://www.youtube.com/@v1epaix"
 KICK = "https://kick.com/viepaix"
 PAYPAL = "https://www.paypal.com/paypalme/viepaix23"
+X = "https://x.com/_viepaix"
 
 # Sizes
 
@@ -105,6 +109,7 @@ class Size(Enum):
     BIGGER = "5em"
     BIGEST = "7.5em"
     BLOGACC = "12em"
+    PHONE = "23em"
 # MouseOver
 
 class MouseOver(rx.State):

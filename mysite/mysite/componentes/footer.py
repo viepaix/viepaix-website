@@ -11,53 +11,61 @@ def footer() -> rx.Component:
             rx.flex(
                 rx.vstack(
                     rx.hstack(
-                        rx.avatar(src=LOGO, radius="full"),
-                        rx.heading("Viepaix", size="3"),
-                        align="center"
-                    ),
-                    rx.card(
                         rx.hstack(
-                            navbar_icons_item(
-                                "", "github", GITHUB
-                            ),
-                            navbar_icons_item(
-                                "", "twitch", TWITCH
-                            ),
-                            navbar_icons_item(
-                                "", "instagram", INSTAGRAM
-                            ),
-                            navbar_icons_item(
-                                "", "youtube", YOUTUBE
-                            ),
-                            justify="between",
-                            align_items="center",
+                            rx.avatar(src=LOGO, radius="full"),
+                            rx.heading("Viepaix", size="3"),
+                            padding_right=Size.MEDIUM.value,
+                            align="center"
                         ),
-                    ),
-                    rx.hstack(
-                        rx.link(
-                            rx.button(
-                                "PayPal Support", 
-                                bg=Colors.ICONS, 
-                                color=Colors.TEXT, 
-                                high_contrast=True
+                        rx.vstack(
+                            rx.card(
+                                rx.hstack(
+                                    navbar_icons_item(
+                                        "", "github", GITHUB
+                                    ),
+                                    navbar_icons_item(
+                                        "", "twitch", TWITCH
+                                    ),
+                                    navbar_icons_item(
+                                        "", "instagram", INSTAGRAM
+                                    ),
+                                    navbar_icons_item(
+                                        "", "youtube", YOUTUBE
+                                    ),
+                                    justify="between",
+                                    align_items="center",
+                                ),
                             ),
-                            href=PAYPAL
+                            rx.hstack(
+                                rx.link(
+                                    rx.button(
+                                        "PayPal Support", 
+                                        bg=Colors.ICONS, 
+                                        color=Colors.TEXT, 
+                                        high_contrast=True,
+                                    ),
+                                    href=PAYPAL,
+                                    width="100%"
+                                ),
+                            ),
+                            align="center",
                         ),
+                        align="center",
                     ),
                     align="center",
                     padding_right=Size.BIGEST.value,
                 ),
                 rx.vstack(
                     rx.vstack(
-                            rx.heading("Interest links", size="2"),
-                        rx.grid(
-                            rx.link("Home", href="/"),
-                            rx.link("Blog page", href="/blog"),
-                            rx.link("Last Blog", href="/blog#nmap"),
-                            rx.link("Last Video", href=YOUTUBE),
-                            columns="2",
-                            spacing="2"
-                        )
+                        rx.heading("Interest links", size="2"),
+                        rx.flex(
+                            rx.link(rx.code("home"), href="/", ),
+                            rx.link(rx.code("blog"), href="/blog"),
+                            rx.link(rx.code("last blog"), href="/blog#nmap"),
+                            rx.link(rx.code("video"), href=YOUTUBE),
+                            spacing="3",
+                        ),
+                        align="center",
                     ),
                     rx.card(
                         rx.hstack(
@@ -67,8 +75,8 @@ def footer() -> rx.Component:
                         size="1"
                     ),
                     align="center"
-                )
-            )
+                ),
+            ),
         ),
         rx.mobile_and_tablet(
             rx.flex(

@@ -249,7 +249,7 @@ def nmapShortCuts() -> rx.Component:
                             ),
                         ),
                         align="center",
-                        width="420px"
+                        width=Size.PHONE.value
                 ),
        )
     )
@@ -288,7 +288,7 @@ def nmap() -> rx.Component:
                     rx.heading("Why nmap?", size="1", padding_top=Size.DEFAULT),
                     rx.text(text2)
                     ),
-                width="420px"
+                width=Size.PHONE.value,
             )
         )
     )

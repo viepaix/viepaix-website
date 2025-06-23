@@ -67,7 +67,7 @@ def projects() -> rx.Component:
                     size="7",
                     radius="full",
                 ),
-                rx.heading("Projects and Gallery", size="5"),
+                rx.heading("Projects and Gallery", size="5", align="center"),
                 rx.text("All my projects are open source, if you want to use something of them you are allowed, just ", 
                         rx.text.strong("give me credits"), 
                         ".",
@@ -79,11 +79,10 @@ def projects() -> rx.Component:
             rx.grid(
                 *[p(card) for card in cards_data],    
                 columns="1",
-                spacing="5",
+                spacing="8",
                 align="center",
-                width="100%",
             ),
         padding_top=Size.BIGGER,
-        margin="16px",
+        width=Size.PHONE.value,
         ),
     )

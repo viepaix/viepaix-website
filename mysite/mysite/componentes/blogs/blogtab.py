@@ -4,7 +4,6 @@ from mysite.styles.styles import *
 
 from mysite.componentes.blogs.nmap import nmap, nmapShortCuts
 
-
 class State(rx.State):
     selected_option: str = "default"
 
@@ -59,14 +58,6 @@ def accordionWithText() -> rx.Component:
                                 on_click=lambda:State.update_text("soon")
                             )
                         ),
-                        rx.accordion.item(
-                            header="Soon",
-                            content = rx.button(
-                                "Not created yet",
-                                bg=Colors.ORANGE,
-                                on_click=lambda:State.update_text("soon")
-                            )
-                        ),
                         color_scheme="purple",
                         color=Colors.TEXT,
                         width=Size.BLOGACC.value,
@@ -93,7 +84,6 @@ def accordionWithText() -> rx.Component:
                             default()
                         )
                     ),
-                    margin_left=Size.MEDIUM,
                 )
             )
         ),
@@ -146,8 +136,18 @@ def accordionWithText() -> rx.Component:
                     ),
                     rx.cond(
                         State.selected_option == "default",
-                        rx.heading("Select The blog of your interest", size="1")
-                    )
+                        rx.center(
+                            rx.heading(
+                                "Select The blog of your interest, all blogs are created by me, if you have any question or want to add somethimg you can contact me through Discord: ",
+                            rx.markdown("[‹ Discord ›](https://discord.gg/5pM7amHBQy)", 
+                                align="center"
+                            ), 
+                            size="1",
+                            align="center"
+                            ),
+                        ),
+                    ),
+                    width=Size.PHONE.value,
                 ),
             )
         )

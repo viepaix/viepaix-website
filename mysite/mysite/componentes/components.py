@@ -6,31 +6,25 @@ def navbar_icons_item(text: str, icon: str, url: str) -> rx.Component:
     return rx.link(
         rx.hstack(
             rx.icon(
-                icon, size=22, color = Colors.ICONS,                 
-                style = {
-                    ":hover" : {
-                        "color" : Colors.TEXT,
-                    },
-                },
+                icon, size=22,
             ),
             rx.text(
-                text, size="3", weight="medium", color = Colors.TEXT, font_family=Fonts.UBU
+                text, size="3", weight="medium", font_family=Fonts.UBU,
             ),
+                _hover = {"color": Colors.TEXT},
         ),
-        href=url,
+        href=url,  
     )
 
 
-def navbar_icons_menu_item(
-    text: str, icon: str, url: str
-) -> rx.Component:
+def navbar_icons_menu_item(text: str, icon: str, url: str) -> rx.Component:
     return rx.link(
-        rx.hstack(
-            rx.icon(icon, size=16),
-            rx.text(text, size="2", weight="medium"),
-            margin=Size.SMALL.value
-        ),
-        href=url,
+            rx.hstack(
+                rx.icon(icon, size=16),
+                rx.text(text, size="2", weight="medium"),
+                margin=Size.SMALL.value,
+            ),
+            href=url,
     )
 
 
@@ -99,25 +93,41 @@ def navbar() -> rx.Component:
                 ),
                 rx.menu.root(
                     rx.menu.trigger(
-                        rx.icon("menu", size=20)
+                        rx.icon("menu", size=23)
                     ),
                     rx.menu.content(
                         navbar_icons_menu_item(
                             "Home", "home", "/"
                         ),
                         navbar_icons_menu_item(
-                            "Projects", "folder", "/projects"
+                            "Projects", "folder", "/projects/"
                         ),
                         navbar_icons_menu_item(
-                            "Blogs", "newspaper", "/blog"
+                            "Blogs", "newspaper", "/blog/"
                         ),
-                        navbar_icons_menu_item(
-                            "Social media", "info", "/#"
+                        rx.menu.sub(
+                            rx.menu.sub_trigger(rx.icon("user_round", size=18),
+                                                rx.text("Socials", weight="medium")
+                            ),
+                            rx.menu.sub_content(
+                                navbar_icons_menu_item(
+                                    "Github", "github", GITHUB
+                                ),
+                                navbar_icons_menu_item(
+                                    "Twitch", "twitch", TWITCH
+                                ),
+                                navbar_icons_menu_item(
+                                    "Instagram", "instagram", INSTAGRAM
+                                ),
+                                navbar_icons_menu_item(
+                                    "Youtube", "youtube", YOUTUBE
+                                ),
+                            ),
                         ),
+                        margin_top="1.5em",
                     ),
                     spacing="4",
-                    justify="between",
-                    color = "white"
+                    dir="rtl",
                 ),
                 justify="between",
                 align_items="center",
@@ -127,8 +137,8 @@ def navbar() -> rx.Component:
         padding=Size.DEFAULT.value,
         position="fixed",
         z_index="20",
-        margin= Size.MEDIUM.value,
-        margin_top = Size.DEFAULT.value,
+        margin = Size.MEDIUM.value,
+        margin_top = Size.SMALL.value,
         border_radius = Size.MEDIUM.value,
         right="0",
         left="0",

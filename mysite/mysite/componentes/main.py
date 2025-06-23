@@ -3,12 +3,8 @@ import reflex as rx
 from datetime import datetime, timezone
 from mysite.styles.styles import *
 
-class MomentState(rx.State):
-    date_now: datetime = datetime.now(timezone.utc)
-
-    @rx.event
-    def update(self):
-        self.date_now = datetime.now(timezone.utc)
+def clock():
+    return rx.moment(interval=6000, format="HH:mm")
 
 def header():
     return rx.container(
@@ -17,7 +13,7 @@ def header():
                     rx.hstack(
                         rx.avatar(
                             fallback="viepaix",
-                            src=LOGO,
+                            src="choso-form.jpg",
                             size="9",
                             radius="full",
                             ),
@@ -30,7 +26,9 @@ def header():
                                        padding_bottom=".3em"
                                        ),
                             rx.hstack(
-                                rx.badge(rx.icon("clock")," DFW - ", rx.moment(MomentState.date_now, format="HH:mm"), size="3", color_scheme="purple", variant="surface", margin_right=Size.SMALL),
+                                rx.badge(rx.icon("clock")," DFW - ",
+                                         clock(), size="3", color_scheme="purple", variant="surface", margin_right=Size.SMALL,
+                                          ),
                                 rx.text.kbd(
                                 "Pentester (Junior)",
                                 size="6",
@@ -80,7 +78,7 @@ def header():
                                 rx.badge(
                                     rx.icon("clock", size=16),
                                     " DFW - ", 
-                                    rx.moment(MomentState.date_now, format="HH:mm"), 
+                                    clock(),
                                         size="2", 
                                         color_scheme="purple", 
                                         variant="surface", 
