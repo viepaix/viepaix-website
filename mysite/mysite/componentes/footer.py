@@ -14,7 +14,6 @@ def footer() -> rx.Component:
                         rx.hstack(
                             rx.avatar(src=LOGO, radius="full"),
                             rx.heading("Viepaix", size="3"),
-                            padding_right=Size.MEDIUM.value,
                             align="center"
                         ),
                         rx.vstack(

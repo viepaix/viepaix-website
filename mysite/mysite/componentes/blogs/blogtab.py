@@ -136,18 +136,8 @@ def accordionWithText() -> rx.Component:
                     ),
                     rx.cond(
                         State.selected_option == "default",
-                        rx.center(
-                            rx.heading(
-                                "Select The blog of your interest, all blogs are created by me, if you have any question or want to add somethimg you can contact me through Discord: ",
-                            rx.markdown("[‹ Discord ›](https://discord.gg/5pM7amHBQy)", 
-                                align="center"
-                            ), 
-                            size="1",
-                            align="center"
-                            ),
-                        ),
-                    ),
-                    width=Size.PHONE.value,
+                        rx.heading("Select The blog of your interest", size="1")
+                    )
                 ),
             )
         )

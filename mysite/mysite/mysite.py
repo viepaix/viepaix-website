@@ -1,5 +1,4 @@
 import reflex as rx
-import datetime
 
 from rxconfig import config
 
@@ -13,32 +12,8 @@ from mysite.componentes.projects.projects import projects as pj
 
 from mysite.styles.styles import *
 
-date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
 class State(rx.State):
     """The app state."""
-
-@rx.page(route="/404",
-         title="ｼ Viepaix - 404 ｼ",
-         description="Page not found. 404. Errrrrrroorrrrrr 404")
-def not_found() -> rx.Component:
-    return rx.center(
-        rx.box(
-            rx.text("➜ nmap -sV /404",
-                    style={"font-family": "Ubuntu Condensed", "font-size": "4rem", "color": "#00FF00"}),
-            rx.text(f"Starting Nmap 7.92 ( https://nmap.org ) at {date}",
-                    style={"font-family": "Ubuntu Condensed", "font-size": "2rem", "color": "#00FF00"}),
-            rx.text("Note: Host seems down. Did you mean viepaix.dev?", 
-                    style={"font-family": "Ubuntu Condensed", "font-size": "2rem", "color": "#00FF00"}),
-            rx.button("Go to Home",on_click=lambda: rx.redirect("/")),
-            background_color="#000000",
-            box_shadow="lg",
-            border_radius="md",
-        ),
-        height="100vh",
-        bg="black"
-    )
-
 
 @rx.page(route="/", 
          title="ｼ Viepaix - Main ｼ",
@@ -109,16 +84,16 @@ app = rx.App(
         "https://fonts.googleapis.com/css2?family=Anta&display=swap",
         "https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Ubuntu+Condensed&display=swap"
         ],
-    head_components=[
-        rx.script(src="https://www.googletagmanager.com/gtag/js?id=G-C9NMED7JY8"),
-        rx.script("""
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'G-C9NMED7JY8');
-                  """)
-        ],
 )
+
+app.head_components += [
+    rx.script(src="https://www.googletagmanager.com/gtag/js?id=G-C9NMED7JY8", async_=True),
+    rx.script("""
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C9NMED7JY8');
+    """)
+        ]
 
 app.add_page(index)
