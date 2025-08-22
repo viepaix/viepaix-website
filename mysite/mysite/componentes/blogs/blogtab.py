@@ -3,9 +3,17 @@ import reflex as rx
 from mysite.styles.styles import *
 
 from mysite.componentes.blogs.nmap import nmap, nmapShortCuts
+from mysite.componentes.blogs.eJPT import ejpt, notes, networkNote, linuxEsc, windowsEsc, checklist
+
+stylesButtons = {"cursor": "pointer","width": "100%"}
 
 class State(rx.State):
     selected_option: str = "default"
+
+    def on_load(self):
+        raw_path = self.router.url or ""
+        if "#" in raw_path:
+            self.selected_option = raw_path.split("#", 1)[1]
 
     def update_text(self, text: str):
         self.selected_option = text
@@ -20,12 +28,84 @@ def default() -> rx.Component:
     )
 
 def accordionWithText() -> rx.Component:
-    return rx.container(
+    return rx.box(
         rx.desktop_only(
             rx.hstack(
                 rx.vstack(
-                    rx.heading("Blog"),
+                    rx.heading("Blog", align="center", size="7"),
                     rx.accordion.root(
+                        rx.accordion.item(
+                            header="eJPT",
+                            content= rx.vstack(
+                                rx.box(
+                                    rx.button(
+                                        "Introduction to eJPT",
+                                        padding=Size.SMALL.value,
+                                        margin_bottom=Size.SMALL,
+                                        bg=Colors.ORANGE,
+                                        style=stylesButtons,
+                                        on_click=[
+                                            State.update_text("ejpt"),
+                                            rx.redirect("/blog#ejpt")
+                                            ]
+                                    ),
+                                    rx.button(
+                                        "Checklist",
+                                        padding=Size.SMALL.value,
+                                        margin_bottom=Size.SMALL,
+                                        bg=Colors.ORANGE,
+                                        style=stylesButtons,
+                                        on_click=[
+                                            State.update_text("checklist"),
+                                            rx.redirect("/blog#checklist")
+                                            ]
+                                    ),
+                                    rx.button(
+                                        "Linux Escalation",
+                                        padding=Size.SMALL.value,
+                                        margin_bottom=Size.SMALL,
+                                        bg=Colors.ORANGE,
+                                        style=stylesButtons,
+                                        on_click=[
+                                            State.update_text("linuxEsc"),
+                                            rx.redirect("/blog#linuxEsc")
+                                            ]
+                                    ),
+                                    rx.button(
+                                        "Windows Escalation",
+                                        padding=Size.SMALL.value,
+                                        margin_bottom=Size.SMALL,
+                                        bg=Colors.ORANGE,
+                                        style=stylesButtons,
+                                        on_click=[
+                                            State.update_text("windowsEsc"),
+                                            rx.redirect("/blog#windowsEsc")
+                                            ]
+                                    ),
+                                    rx.button(
+                                        rx.text("Shell, Stabilization & Pivoting", size="1"),
+                                        padding=Size.SMALL.value,
+                                        margin_bottom=Size.SMALL,
+                                        bg=Colors.ORANGE,
+                                        style=stylesButtons,
+                                        on_click=[
+                                            State.update_text("notes"),
+                                            rx.redirect("/blog#notes")
+                                            ]
+                                    ),
+                                    rx.button(
+                                        "networking",
+                                        padding=Size.SMALL.value,
+                                        bg=Colors.ORANGE,
+                                        style=stylesButtons,
+                                        on_click=[
+                                            State.update_text("networking"),
+                                            rx.redirect("/blog#networking")
+                                            ]
+                                    ),
+                                ),
+                            )
+                        ),
                         rx.accordion.item(
                             header="nmap",
                             content = rx.box(
@@ -34,19 +114,20 @@ def accordionWithText() -> rx.Component:
                                 padding=Size.SMALL.value,
                                 margin_bottom=Size.SMALL,
                                 bg=Colors.ORANGE,
-                                style={
-                                    "cursor": "pointer"
-                                },
-                                on_click=lambda:State.update_text("nmap"),
+                                style=stylesButtons,
+                                on_click=[State.update_text("nmap"),
+                                    rx.redirect("/blog#nmap")
+                                    ]
                             ),
                             rx.button(
                                 "Short Cuts",
                                 padding=Size.SMALL.value,
                                 bg=Colors.ORANGE,
-                                style={
-                                    "cursor": "pointer"
-                                },
-                                on_click=lambda:State.update_text("nmapShortCuts")
+                                style=stylesButtons,
+                                on_click=[
+                                    State.update_text("nmapShortCuts"),
+                                    rx.redirect("/blog#nmapShortCuts")
+                                    ]
                             ),
                             )
                         ),
@@ -55,18 +136,43 @@ def accordionWithText() -> rx.Component:
                             content = rx.button(
                                 "Not created yet",
                                 bg=Colors.ORANGE,
-                                on_click=lambda:State.update_text("soon")
+                                on_click=State.update_text("soon")
                             )
                         ),
                         color_scheme="purple",
                         color=Colors.TEXT,
                         width=Size.BLOGACC.value,
                         collapsible=True,
-                        type="multiple"
-                    )
+                        type="multiple",
+                    ),
+                    align="center",
                 ),
                 rx.card(
                     rx.flex(
+                        rx.cond(
+                            State.selected_option == "ejpt",
+                            ejpt(),
+                        ),
+                        rx.cond(
+                            State.selected_option == "checklist",
+                            checklist(),
+                        ),
+                        rx.cond(
+                            State.selected_option == "notes",
+                            notes(),
+                        ),
+                        rx.cond(
+                            State.selected_option == "linuxEsc",
+                            linuxEsc(),
+                        ),
+                        rx.cond(
+                            State.selected_option == "windowsEsc",
+                            windowsEsc(),
+                        ),
+                        rx.cond(
+                            State.selected_option == "networking",
+                            networkNote(),
+                        ),
                         rx.cond(
                             State.selected_option == "nmap",
                             nmap(),
@@ -84,8 +190,14 @@ def accordionWithText() -> rx.Component:
                             default()
                         )
                     ),
-                )
-            )
+                    margin_left=Size.BIGGER.value,
+                    max_width="70rem",
+                    align="center",
+                ),
+            ),
+            width="100%",
+            align="center",
+            padding_left=Size.BIGEST.value,
         ),
         rx.mobile_and_tablet(
             rx.vstack(
@@ -105,15 +217,15 @@ def accordionWithText() -> rx.Component:
                             rx.menu.sub_trigger("Nmap"),
                             rx.menu.sub_content(
                                 rx.menu.item("Introduction",
-                                             on_click=lambda:State.update_text("nmap")
+                                             on_click=State.update_text("nmap")
                                 ),
                                 rx.menu.item("Short Cuts",
-                                             on_click=lambda:State.update_text("nmapShortCuts")
+                                             on_click=State.update_text("nmapShortCuts")
                                 ),
                             ),
                         ),
                         rx.menu.separator(),
-                        rx.menu.item("Soon", on_click=lambda:State.update_text("soon"), color="red")
+                        rx.menu.item("Soon", on_click=State.update_text("soon"), color="red")
                     )
                 ),
                 top="5.5em",

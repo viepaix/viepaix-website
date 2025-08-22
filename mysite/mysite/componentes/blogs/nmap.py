@@ -8,7 +8,7 @@ def nmapShortCuts() -> rx.Component:
                 rx.vstack(
                     rx.vstack(
                         rx.heading("Short Cuts", 
-                                    size="2",
+                                    size="5",
                                     padding_top=Size.MEDIUM.value),
                             rx.blockquote(rx.code("nmap [scan type] [options] [target]", color_scheme="violet", variant="ghost", high_contrast=True), color_scheme="violet"),
                             align="center"
@@ -86,6 +86,7 @@ def nmapShortCuts() -> rx.Component:
                                         ),
                                     )
                                 ),
+                                width="100%",
                             ),
                             width="100%",
                             align="center",

@@ -14,7 +14,7 @@ def navbar_icons_item(text: str, icon: str, url: str) -> rx.Component:
                 },
             ),
             rx.text(
-                text, size="3", weight="medium", color = Colors.TEXT, font_family=Fonts.UBU
+                text, size="3", weight="medium", color = Colors.ICONS, font_family=Fonts.UBU
             ),
         ),
         href=url,

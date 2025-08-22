@@ -8,7 +8,7 @@ year = datetime.date.today().year - 2004
 
 text = f"My name is Santiago, I'm {year} years old and I am a student of CyberSecurity, Pentesting, Hack4u student. From Colombia, actually in the U.S. trying to live and be someone, learning programming languages and new things all the days."
 
-text2 = "My dream is to be a great hacker, programmer, and person, I want to be a great professional in the area of cybersecurity and programming, help my family in all the ways that I can, and be someone in life."
+text2 = "My goal is to become a skilled professional in cybersecurity and programming, with expertise in web development and penetration testing. I am committed to continuously improving my technical abilities, contributing positively to the field, and supporting my family while striving to make a meaningful impact."
 
 def languages():
     return rx.card(
@@ -228,7 +228,7 @@ def body() -> rx.Component:
                     padding_bottom=Size.MEDIUM
                     ),
                     rx.vstack(
-                        rx.heading("My Dream", color=Colors.TEXT),
+                        rx.heading("Aspiring Cybersecurity Professional Web Developer & Pentester", color=Colors.TEXT, size="2", align="center"),
                         rx.text(text2, align="center", high_contrast=True, size="4"),
                         width="85%",
                         align="center",
@@ -276,7 +276,7 @@ def body() -> rx.Component:
             rx.vstack(
                 rx.heading("=--= | Video of Youtube | =--=", size="7", margin_bottom=Size.DEFAULT),
                     rx.video(
-                        url="https://www.youtube.com/embed/-V1t0eHhQGo",
+                        url="https://www.youtube.com/embed/lCtWMpDET04",
                         playing=True,
                         volume=0,
                         width="1080px",

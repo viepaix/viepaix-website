@@ -13,7 +13,15 @@ from mysite.componentes.projects.projects import projects as pj
 from mysite.styles.styles import *
 
 class State(rx.State):
-    """The app state."""
+    selected_option: str = "default"
+
+    def on_load(self):
+        raw_path = self.router.url or ""
+        if "#" in raw_path:
+            self.selected_option = raw_path.split("#", 1)[1]
+
+    def update_text(self, text: str):
+        self.selected_option = text
 
 @rx.page(route="/", 
          title="ｼ Viepaix - Main ｼ",
@@ -43,8 +51,7 @@ def index() -> rx.Component:
             align_items="center",
         ),
     )
-
-@rx.page(route="/blog", title="ｼ Viepaix - Blog ｼ")
+@rx.page(route="/blog", title="ｼ Viepaix - Blog ｼ", on_load=State.on_load,)
 def blog() -> rx.Component:
     return rx.box(
         rx.vstack(
