@@ -6,6 +6,7 @@ from mysite.componentes.components import navbar
 from mysite.componentes.main import header
 from mysite.componentes.body import body
 from mysite.componentes.footer import footer
+from mysite.componentes.maya import maya
 
 from mysite.componentes.blogs.blogtab import accordionWithText
 from mysite.componentes.projects.projects import projects as pj
@@ -13,15 +14,7 @@ from mysite.componentes.projects.projects import projects as pj
 from mysite.styles.styles import *
 
 class State(rx.State):
-    selected_option: str = "default"
-
-    def on_load(self):
-        raw_path = self.router.url or ""
-        if "#" in raw_path:
-            self.selected_option = raw_path.split("#", 1)[1]
-
-    def update_text(self, text: str):
-        self.selected_option = text
+    """The app state."""
 
 @rx.page(route="/", 
          title="ｼ Viepaix - Main ｼ",
@@ -51,7 +44,8 @@ def index() -> rx.Component:
             align_items="center",
         ),
     )
-@rx.page(route="/blog", title="ｼ Viepaix - Blog ｼ", on_load=State.on_load,)
+
+@rx.page(route="/blog", title="ｼ Viepaix - Blog ｼ")
 def blog() -> rx.Component:
     return rx.box(
         rx.vstack(
@@ -82,6 +76,15 @@ def projects() -> rx.Component:
             footer(),
             align_items="center",
         )
+    )
+
+@rx.page(route="/only/for/maya", title=" ♡ Maya ♡ ")
+def maya_page() -> rx.Component:
+    return rx.box(
+        rx.vstack(
+            maya(),
+            align_items="center"
+        ),
     )
 
 app = rx.App(
