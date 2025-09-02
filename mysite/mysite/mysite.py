@@ -16,8 +16,7 @@ from mysite.styles.styles import *
 class State(rx.State):
     """The app state."""
 
-@rx.page(route="/", 
-         title="ｼ Viepaix - Main ｼ",
+@rx.page(title="ｼ Viepaix - Main ｼ",
          description="My own website, with projects, blogs (nmap, and more soon). Viepaix is a student of Cybersecurity.")
 def index() -> rx.Component:
     # Welcome Page (Index)
@@ -106,4 +105,3 @@ app.head_components += [
     """)
         ]
 
-app.add_page(index)
